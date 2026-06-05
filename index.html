@@ -29,7 +29,7 @@
 .filter-chip button:hover{color:#fecaca}
 .filters select,.filters input{min-width:0}
 
-@media(max-width:760px){
+@media(max-width:1100px){
   .table-wrap{overflow:visible;background:transparent;border:0;box-shadow:none;margin:18px 0 26px}
   .trails-table{min-width:0;width:100%;border-collapse:separate;border-spacing:0 12px;background:transparent;border:0}
   .trails-table thead{display:none}
@@ -49,6 +49,20 @@
   .trails-table tbody td:last-child{border-bottom:0;padding-bottom:14px}
   .trails-table td:nth-child(6),.trails-table td:nth-child(7),.trails-table th:nth-child(6),.trails-table th:nth-child(7){text-align:right;white-space:normal}
   .trails-table .pill,.trails-table .metric{margin-left:auto}
+}
+
+@media(max-width:1100px){
+  .wrap{padding-left:10px;padding-right:10px}
+  .filters{position:static;margin-left:0;margin-right:0}
+  .table-wrap{overflow:visible!important;background:transparent!important;border:0!important;box-shadow:none!important;margin:16px 0 24px!important}
+  .trails-table{display:block!important;min-width:0!important;width:100%!important;border-collapse:separate!important;border-spacing:0 12px!important;background:transparent!important;border:0!important}
+  .trails-table thead{display:none!important}
+  .trails-table tbody{display:block!important;width:100%!important}
+  .trails-table tbody tr{display:block!important;width:100%!important;border:1px solid var(--line);border-left:6px solid #60a5fa;border-radius:16px;background:#0d1729;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.18);margin-bottom:12px}
+  .trails-table tbody td{display:flex!important;justify-content:space-between;align-items:flex-start;gap:14px;padding:10px 12px;border-bottom:1px solid rgba(38,57,87,.7);background:transparent!important;text-align:right!important;white-space:normal!important}
+  .trails-table tbody td::before{content:attr(data-label);color:#93c5fd;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;text-align:left;min-width:92px;max-width:120px;flex:0 0 auto}
+  .trails-table tbody td:first-child{position:static!important;box-shadow:none!important;background:transparent!important;font-size:18px;padding-top:14px}
+  .trails-table tbody td:last-child{border-bottom:0;padding-bottom:14px}
 }
 </style><link href="manifest.webmanifest" rel="manifest"/><link href="icon-192.png" rel="apple-touch-icon"/><meta content="#0f172a" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="Trilhos" name="apple-mobile-web-app-title"/></head><body><main class="wrap">
 <h1>Manteigas Trilhos Verdes — trilhos com filtros + acumulado GPX</h1><p class="lead">Todos os trilhos do site, com filtros e acumulado estimado a partir dos GPX/KML. Funciona offline depois da primeira visita e pode ser adicionado ao ecrã principal.</p>
