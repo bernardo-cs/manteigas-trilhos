@@ -306,6 +306,7 @@ async function initTrailMap(){
   const el=document.getElementById('trailMap');
   if(!el || !window.L || !window.TRAIL_STARTS) return;
   const points=window.TRAIL_STARTS;
+  L.Icon.Default.imagePath='';
   L.Icon.Default.mergeOptions({
     iconRetinaUrl:'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon-2x.png',
     iconUrl:'https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png',
