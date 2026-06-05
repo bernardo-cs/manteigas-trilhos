@@ -1,0 +1,154 @@
+[
+  {
+    "code": "PR1",
+    "name": "Poço do Inferno",
+    "label": "",
+    "lat": 40.373558,
+    "lon": -7.517744,
+    "url": "#PR1"
+  },
+  {
+    "code": "PR2",
+    "name": "Javali",
+    "label": "",
+    "lat": 40.395236,
+    "lon": -7.537228,
+    "url": "#PR2"
+  },
+  {
+    "code": "PR3",
+    "name": "Vila",
+    "label": "",
+    "lat": 40.402903,
+    "lon": -7.537806,
+    "url": "#PR3"
+  },
+  {
+    "code": "PR4",
+    "name": "Carvão",
+    "label": "",
+    "lat": 40.400617,
+    "lon": -7.541208,
+    "url": "#PR4"
+  },
+  {
+    "code": "PR5",
+    "name": "Maciço Central",
+    "label": "",
+    "lat": 40.328072,
+    "lon": -7.606558,
+    "url": "#PR5"
+  },
+  {
+    "code": "PR6",
+    "name": "Glaciar",
+    "label": "Vila",
+    "lat": 40.400194,
+    "lon": -7.539664,
+    "url": "#PR6"
+  },
+  {
+    "code": "PR6",
+    "name": "Glaciar",
+    "label": "Torre",
+    "lat": 40.322233,
+    "lon": -7.612497,
+    "url": "#PR6"
+  },
+  {
+    "code": "PR7",
+    "name": "Poios Brancos",
+    "label": "",
+    "lat": 40.326739,
+    "lon": -7.570558,
+    "url": "#PR7"
+  },
+  {
+    "code": "PR8",
+    "name": "Reboleira",
+    "label": "",
+    "lat": 40.410694,
+    "lon": -7.469119,
+    "url": "#PR8"
+  },
+  {
+    "code": "PR9",
+    "name": "Vale de Amoreira",
+    "label": "",
+    "lat": 40.415772,
+    "lon": -7.4426,
+    "url": "#PR9"
+  },
+  {
+    "code": "PR10",
+    "name": "Azinha",
+    "label": "",
+    "lat": 40.411583,
+    "lon": -7.467814,
+    "url": "#PR10"
+  },
+  {
+    "code": "PR11",
+    "name": "Sol",
+    "label": "",
+    "lat": 40.402881,
+    "lon": -7.536786,
+    "url": "#PR11"
+  },
+  {
+    "code": "PR12",
+    "name": "Sameiro",
+    "label": "",
+    "lat": 40.4082,
+    "lon": -7.489144,
+    "url": "#PR12"
+  },
+  {
+    "code": "PR13",
+    "name": "Faias",
+    "label": "",
+    "lat": 40.423553,
+    "lon": -7.516375,
+    "url": "#PR13"
+  },
+  {
+    "code": "PR14",
+    "name": "Corredor de Mouros",
+    "label": "",
+    "lat": 40.442111,
+    "lon": -7.515231,
+    "url": "#PR14"
+  },
+  {
+    "code": "PR15",
+    "name": "Covão de Santa Maria",
+    "label": "",
+    "lat": 40.419289,
+    "lon": -7.540289,
+    "url": "#PR15"
+  },
+  {
+    "code": "PR16",
+    "name": "Quartelas",
+    "label": "",
+    "lat": 40.404017,
+    "lon": -7.540267,
+    "url": "#PR16"
+  },
+  {
+    "code": "GR33",
+    "name": "Grande Rota do Zêzere",
+    "label": "",
+    "lat": 40.328084,
+    "lon": -7.586889,
+    "url": "#GR33"
+  },
+  {
+    "code": "GR22.1",
+    "name": "Grande Rota AHP",
+    "label": "",
+    "lat": 40.359024,
+    "lon": -7.348717,
+    "url": "#GR22.1"
+  }
+]

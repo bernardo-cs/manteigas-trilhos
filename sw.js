@@ -1,10 +1,11 @@
-const CACHE_NAME = 'manteigas-trilhos-v2';
+const CACHE_NAME = 'manteigas-trilhos-v3';
 const ASSETS = [
   './',
   './index.html',
   './manifest.webmanifest',
   './icon-192.png',
-  './icon-512.png'
+  './icon-512.png',
+  './trail-starts.json'
 ];
 
 self.addEventListener('install', event => {
