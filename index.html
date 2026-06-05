@@ -28,6 +28,28 @@
 .filter-chip button{padding:0;margin:0;border:0;background:transparent;color:#fca5a5;font-size:18px;line-height:1;cursor:pointer;font-weight:900}
 .filter-chip button:hover{color:#fecaca}
 .filters select,.filters input{min-width:0}
+
+@media(max-width:760px){
+  .table-wrap{overflow:visible;background:transparent;border:0;box-shadow:none;margin:18px 0 26px}
+  .trails-table{min-width:0;width:100%;border-collapse:separate;border-spacing:0 12px;background:transparent;border:0}
+  .trails-table thead{display:none}
+  .trails-table tbody{display:block}
+  .trails-table tbody tr{display:block;border:1px solid var(--line);border-left:6px solid #60a5fa;border-radius:16px;background:#0d1729;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,.18);margin-bottom:12px}
+  .trails-table tbody tr.easy{border-left-color:var(--green)}
+  .trails-table tbody tr.medium{border-left-color:var(--amber)}
+  .trails-table tbody tr.hard{border-left-color:var(--red)}
+  .trails-table tbody tr.limited{border-left-color:var(--purple)}
+  .trails-table tbody tr.walk{border-left-color:#64748b}
+  .trails-table tbody td{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:10px 12px;border-bottom:1px solid rgba(38,57,87,.7);background:transparent!important;text-align:right;white-space:normal}
+  .trails-table tbody td::before{content:attr(data-label);color:#93c5fd;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;text-align:left;min-width:92px;max-width:120px;flex:0 0 auto}
+  .trails-table tbody td:first-child{position:static;box-shadow:none;background:transparent!important;font-size:18px;padding-top:14px}
+  .trails-table tbody td:first-child::before{content:'Rota'}
+  .trails-table tbody td:nth-child(2){font-size:17px;font-weight:850;color:#f8fafc}
+  .trails-table tbody td:nth-child(2)::before{content:'Nome'}
+  .trails-table tbody td:last-child{border-bottom:0;padding-bottom:14px}
+  .trails-table td:nth-child(6),.trails-table td:nth-child(7),.trails-table th:nth-child(6),.trails-table th:nth-child(7){text-align:right;white-space:normal}
+  .trails-table .pill,.trails-table .metric{margin-left:auto}
+}
 </style><link href="manifest.webmanifest" rel="manifest"/><link href="icon-192.png" rel="apple-touch-icon"/><meta content="#0f172a" name="theme-color"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/><meta content="Trilhos" name="apple-mobile-web-app-title"/></head><body><main class="wrap">
 <h1>Manteigas Trilhos Verdes — trilhos com filtros + acumulado GPX</h1><p class="lead">Todos os trilhos do site, com filtros e acumulado estimado a partir dos GPX/KML. Funciona offline depois da primeira visita e pode ser adicionado ao ecrã principal.</p>
 <div class="filters"><input id="q" placeholder="Pesquisar: PR8, Reboleira, glaciar…"/><select id="btt"><option value="all">Todos os trilhos</option><option value="yes">Só trilhos BTT</option><option value="limited">BTT com limitações</option><option value="no">Só caminhada / pedestre</option></select><select id="diff"><option value="all">Todas as dificuldades</option><option>Fácil</option><option>Média</option><option>Difícil</option><option>Muito difícil</option></select><select id="profile"><option value="all">Todos os perfis</option><option value="rolante">Rolante / estradão</option><option value="serra">Serra / técnico</option><option value="pedestre">Pedestre</option><option value="limit">Com limitações</option></select><button id="favoritesOnly" type="button">☆ Favoritos</button><button id="clear">Limpar</button><div class="count"><span id="count"></span> trilhos</div></div><div class="active-filters" id="activeFilters"></div>
