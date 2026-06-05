@@ -327,8 +327,10 @@ async function initTrailMap(){
   const selectedRouteLayer=L.layerGroup().addTo(map);
   const locationLayer=L.layerGroup().addTo(map);
   const routeByCode=new Map();
+  const markerRecords=[];
   let routeBounds=[];
   let routesVisible=false;
+  let visibleCodes=null;
 
   const colorFor=(r)=>{
     const b=(r.btt||'').toLowerCase();
@@ -355,7 +357,7 @@ async function initTrailMap(){
     const r=routeByCode.get(code);
     if(!r) return;
     selectedRouteLayer.clearLayers();
-    const line=L.polyline(r.latlngs,{color:colorFor(r),weight:7,opacity:.95}).addTo(selectedRouteLayer);
+    const line=L.polyline(r.latlngs,{color:colorFor(r),weight:7,opacity:.95,trailCode:code}).addTo(selectedRouteLayer);
     line.bindPopup(`<b>${r.code} — ${r.name}</b><br>${r.distance_km ?? 'n/d'} km · D+ ${r.gain_m ?? 'n/d'} m<br>BTT: ${r.btt}<br><a href="#${r.code}">Ver detalhes</a>`);
     if(openPopupAt) line.openPopup(openPopupAt);
     map.fitBounds(line.getBounds(),{padding:[32,32],maxZoom:15});
@@ -363,15 +365,33 @@ async function initTrailMap(){
 
   points.forEach(p=>{
     const title=p.code+(p.label?' — '+p.label:'')+' · '+p.name;
-    const marker=L.marker([p.lat,p.lon],{title}).addTo(markerLayer);
+    const marker=L.marker([p.lat,p.lon],{title});
     marker.bindPopup(`<b>${p.code}${p.label?' — '+p.label:''}</b><br>${p.name}<br><a href="${p.url}">Ver detalhes</a>`);
     marker.on('click',()=>showTrailRoute(p.code,[p.lat,p.lon]));
+    markerRecords.push({code:p.code, marker, latlng:[p.lat,p.lon]});
     bounds.push([p.lat,p.lon]);
   });
 
   const toggle=document.getElementById('toggleRoutes');
   const fit=document.getElementById('fitMap');
   const locate=document.getElementById('locateMe');
+  function refreshMapFilter(){
+    const allowed=visibleCodes instanceof Set ? visibleCodes : null;
+    markerLayer.clearLayers();
+    allRoutesLayer.clearLayers();
+    routeBounds=[];
+    markerRecords.forEach(({code,marker,latlng})=>{ if(!allowed || allowed.has(code)){ marker.addTo(markerLayer); } });
+    routeByCode.forEach((r,code)=>{
+      if(!allowed || allowed.has(code)){
+        const line=L.polyline(r.latlngs,{color:colorFor(r),weight:4,opacity:.72}).addTo(allRoutesLayer);
+        line.bindPopup(`<b>${r.code} — ${r.name}</b><br>${r.distance_km ?? 'n/d'} km · D+ ${r.gain_m ?? 'n/d'} m<br>BTT: ${r.btt}<br><a href="#${r.code}">Ver detalhes</a>`);
+        routeBounds.push(...r.latlngs);
+      }
+    });
+    const selected=selectedRouteLayer.getLayers()[0];
+    if(selected && selected.options && allowed && selected.options.trailCode && !allowed.has(selected.options.trailCode)) selectedRouteLayer.clearLayers();
+  }
+  window.updateTrailMapFilter=(codes)=>{ visibleCodes=Array.isArray(codes) ? new Set(codes) : null; refreshMapFilter(); };
   function setRoutesVisible(on){
     routesVisible=on;
     if(on){ allRoutesLayer.addTo(map); toggle?.classList.add('active'); if(toggle) toggle.textContent='Esconder todos os percursos'; }
@@ -401,6 +421,8 @@ async function initTrailMap(){
     },{enableHighAccuracy:true,timeout:10000,maximumAge:30000});
   });
 
+  refreshMapFilter();
+  if(Array.isArray(window.currentVisibleTrailCodes)) window.updateTrailMapFilter(window.currentVisibleTrailCodes);
   if(bounds.length) map.fitBounds(bounds,{padding:[28,28]});
   setTimeout(()=>map.invalidateSize(),250);
 }
@@ -443,13 +465,16 @@ function renderActiveFilters(){
 function apply(){
   const query=q.value.trim().toLowerCase(), bv=btt.value, dv=diff.value, pv=profile.value, favs=readFavs();
   let visibleCards=0;
+  const visibleCodes=[];
   els.forEach(el=>{
     const text=el.dataset.text||'', code=codeOf(el);
     const show=(!query||text.includes(query))&&(bv==='all'||el.dataset.btt===bv)&&(dv==='all'||el.dataset.diff===dv)&&okProfile(pv,text)&&(!favoritesOnly||favs.has(code));
     el.classList.toggle('hidden',!show);
-    if(show&&el.classList.contains('trail-card')) visibleCards++;
+    if(show&&el.classList.contains('trail-card')){ visibleCards++; visibleCodes.push(code); }
   });
   count.textContent=visibleCards;
+  window.currentVisibleTrailCodes=visibleCodes;
+  if(window.updateTrailMapFilter) window.updateTrailMapFilter(visibleCodes);
   refreshFavButtons();
   renderActiveFilters();
 }
