@@ -1,4 +1,4 @@
-const CACHE_NAME = 'manteigas-trilhos-v14';
+const CACHE_NAME = 'manteigas-trilhos-v15';
 const ASSETS = [
   './',
   './index.html',
